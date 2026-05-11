@@ -18,6 +18,7 @@
 /* Comportamiento fluido al hacer scroll tras pulsar un enlace del menú */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 /* ESTILOS BASE DEL CUERPO */
@@ -644,11 +645,15 @@ footer {
 /* Para Pantallas tipo Móvil (menos de 768px de ancho) */
 @media (max-width: 768px) {
   
+  html {
+    scroll-padding-top: 180px;
+  }
+
   /* El Hero entero se pone en columna: Texto arriba, botella abajo */
   .hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 180px;
     height: auto;
     padding-bottom: 4rem;
   }
