@@ -1,0 +1,278 @@
+<!DOCTYPE html> <!-- Le dice al navegador que esto es un documento HTML5 moderno -->
+<html lang="es"> <!-- Inicia el documento y define el idioma español para buscadores y lectores de pantalla -->
+<head>
+    <meta charset="UTF-8"> <!-- Permite usar caracteres especiales como la 'ñ' y tildes sin que se rompa el texto -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la web se adapte al ancho de la pantalla del móvil -->
+    <title>Cerveza Certeza | El Sabor Original</title> <!-- El texto que aparece en la pestaña del navegador -->
+    
+    <!-- Google Fonts: Importa tipos de letra externos para que la web se vea más bonita -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Acelera la conexión con los servidores de fuentes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Carga las fuentes 'Oswald' y 'Roboto' -->
+    
+    <!-- CSS: Conecta este archivo HTML con tu archivo de estilos para darle diseño -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> <!-- Aquí empieza todo lo que el usuario realmente ve en la pantalla -->
+
+    <!-- Header / Navegación: La barra superior que siempre está visible -->
+    <header>
+        <a href="#" class="logo">CERTEZA<span>.</span></a> <!-- El logo de la marca. El '#' hace que al hacer clic recargue la parte superior -->
+        <nav> <!-- Etiqueta semántica para los menús de navegación -->
+            <ul> <!-- Una lista desordenada para agrupar los enlaces -->
+                <!-- Cada 'li' es un elemento de la lista. El 'href="#algo"' te lleva a la sección de la página que tiene ese 'id' -->
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sabor">El Sabor</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#novedades">Novedades</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Hero: La primera gran pantalla visual que ves al entrar -->
+    <section id="inicio" class="hero">
+        <div class="hero-content"> <!-- Agrupa el texto para separarlo de la imagen -->
+            <h1>La certeza de un <br><span>Sabor Auténtico</span></h1> <!-- Título principal. '<br>' hace un salto de línea -->
+            <p>Al fin una cerveza artesanal con sabor a industrial.</p> <!-- Subtítulo descriptivo -->
+            <a href="#sabor" class="btn">Descubre el Sabor</a> <!-- Botón que lleva a la sección "sabor" -->
+        </div>
+        <div class="hero-image"> <!-- Contenedor de la imagen del botellín -->
+            <img src="imagenes/botellin.jpg" alt="Botellín Cerveza Certeza"> <!-- La imagen en sí. 'alt' es el texto alternativo si la imagen falla -->
+        </div>
+    </section>
+
+    <!-- Sección El Sabor: Contiene el carrusel interactivo -->
+    <section id="sabor" class="sabor">
+        <h2 class="section-title">El Sabor Original</h2> <!-- Título de la sección -->
+        <p class="sabor-desc"> <!-- Párrafo descriptivo -->
+            Nuestra receta única ofrece lo mejor de dos mundos. El cuidado y la selección de ingredientes de una cerveza artesanal, combinados con la consistencia, frescura y cuerpo de las grandes industriales. Solo un sabor, pero es el único que necesitas.
+        </p>
+        
+        <div class="carousel-container" id="sabor-carousel"> <!-- La caja principal que agrupa todo el carrusel -->
+            
+            <!-- Slide 1: Primera diapositiva. Tiene la clase 'active' para que sea la que se ve al principio -->
+            <div class="carousel-slide active">
+                <div class="slide-content">
+                    <div class="slide-text"> <!-- Textos de la diapositiva -->
+                        <h3>Cuerpo Ligero</h3>
+                        <p>Color dorado brillante y espuma blanca persistente. Perfecta para calmar la sed en cualquier momento del día.</p>
+                    </div>
+                    <div class="slide-img"> <!-- Imagen de la diapositiva -->
+                        <img src="imagenes/basoCerveza.jpg" alt="Cuerpo Ligero">
+                    </div>
+                </div>
+            </div> 
+            
+            <!-- Slide 2: Diapositiva oculta inicialmente. 'reverse' invierte el orden del texto y la imagen -->
+            <div class="carousel-slide">
+                <div class="slide-content reverse">
+                    <div class="slide-text">
+                        <h3>Amargor Equilibrado</h3>
+                        <p>Un toque de lúpulo exacto para dejar un final refrescante sin ser abrumador. El balance perfecto que buscas.</p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="imagenes/toque_lupulo.jpg" alt="Amargor Equilibrado">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <h3>Ingredientes Puros</h3>
+                        <p>Agua cristalina, malta de cebada seleccionada y la levadura exclusiva que da vida a nuestra Certeza.</p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="imagenes/ingredientes.jpg" alt="Ingredientes Puros">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+                <div class="slide-content reverse">
+                    <div class="slide-text">
+                        <h3>La Compañía Perfecta</h3>
+                        <p>Diseñada para unir a la gente. El sabor ideal para esos momentos de risas, celebraciones y brindis con amigos.</p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="imagenes/felicidad_cerveza.jpg" alt="Gente contenta bebiendo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flechas de navegación: Ejecutan funciones Javascript (onclick) para cambiar de foto -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <!-- Flecha izquierda (resta 1 al índice) -->
+            <a class="next" onclick="plusSlides(1)">&#10095;</a> <!-- Flecha derecha (suma 1 al índice) -->
+
+            <!-- Indicadores: Los puntitos de abajo para saltar a una foto específica -->
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span> <!-- Va a la foto 1 -->
+                <span class="dot" onclick="currentSlide(1)"></span> <!-- Va a la foto 2 -->
+                <span class="dot" onclick="currentSlide(2)"></span> <!-- Va a la foto 3 -->
+                <span class="dot" onclick="currentSlide(3)"></span> <!-- Va a la foto 4 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proceso de Elaboración: Lista visual de pasos -->
+    <section id="proceso" class="proceso">
+        <h2 class="section-title">Elaboración Tradicional</h2>
+        <div class="proceso-container"> <!-- Caja que agrupa todos los pasos -->
+            
+            <!-- Paso 1 -->
+            <div class="proceso-step">
+                <div class="proceso-img">
+                    <img src="imagenes/seleccion_ingredientes.jpg" alt="Paso 1: Ingredientes">
+                </div>
+                <div class="proceso-text">
+                    <h3>1. Selección de Ingredientes</h3>
+                    <p>Elegimos la mejor malta de cebada y los lúpulos más frescos para garantizar ese sabor inconfundible que nos caracteriza. Buscamos la máxima calidad para nuestra cerveza única.</p>
+                </div>
+            </div>
+            
+            <!-- Paso 2: Usa 'reverse' para intercalar el diseño (imagen a la derecha, texto a la izquierda) -->
+            <div class="proceso-step reverse">
+                <div class="proceso-img">
+                    <img src="imagenes/maceraccion_y_coccion.jpg" alt="Paso 2: Cocción">
+                </div>
+                <div class="proceso-text">
+                    <h3>2. Maceración y Cocción</h3>
+                    <p>Un proceso lento y meticuloso donde extraemos los azúcares naturales. Añadimos el lúpulo en el momento exacto para conseguir ese amargor perfecto y equilibrado.</p>
+                </div>
+            </div>
+            
+            <!-- Paso 3 -->
+            <div class="proceso-step">
+                <div class="proceso-img">
+                    <img src="imagenes/maduracion.jpg" alt="Paso 3: Fermentación">
+                </div>
+                <div class="proceso-text">
+                    <h3>3. Fermentación y Maduración</h3>
+                    <p>Dejamos que el tiempo haga su magia. Nuestra levadura especial trabaja sin prisas a baja temperatura para redondear el perfil fresco y brillante de Certeza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Historia: Información sobre la marca -->
+    <section id="historia" class="historia">
+        <div class="historia-text">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <p>Todo empezó con una pregunta simple en la barra de un bar: "¿Por qué es tan difícil encontrar una cerveza artesanal que te puedas tomar toda la tarde sin cansarte?". Así nació <strong>Cerveza Certeza</strong>.</p>
+            <p>No queríamos cervezas con sabores extraños ni nombres impronunciables. Queríamos la cerveza de siempre, pero hecha mejor. Elaborada con la pasión de un maestro cervecero, pero con la misión de ser la compañera perfecta para el aperitivo, la comida o la noche.</p>
+            <p><strong>Certeza</strong> es nuestra promesa: la garantía de que al abrir la botella, vas a encontrar exactamente lo que quieres. Una cerveza buena, fría y sin rodeos.</p>
+        </div>
+        <div class="historia-image"> <!-- Caja con texto decorativo superpuesto -->
+            <div style="z-index: 2; position: relative; max-width: 80%;">
+                "La pureza en cada trago."
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Newsletter: Formulario para recolectar correos -->
+    <section id="novedades" class="newsletter">
+        <div class="newsletter-content">
+            <h2 class="section-title">¿Sed de Novedades?</h2>
+            <p>Únete al Club Certeza. Entérate antes que nadie de nuestros nuevos lanzamientos, eventos exclusivos y ventajas solo para auténticos cerveceros.</p>
+            
+            <!-- Formulario. 'action="#"' significa que al enviar recarga la página. 'method="POST"' es la forma segura de enviar datos ocultos -->
+            <form class="newsletter-form" action="#" method="POST">
+                <!-- Campo para introducir texto. 'type="email"' obliga a que lleve una @. 'required' obliga a rellenarlo -->
+                <input type="email" placeholder="Escribe tu correo electrónico..." required>
+                <button type="submit" class="btn">Suscribirme</button> <!-- Envía el formulario -->
+            </form>
+            
+            <div class="newsletter-terms">
+                <!-- Casilla de verificación de términos legales -->
+                <input type="checkbox" id="terms" required>
+                <!-- La etiqueta asociada al checkbox. Tocar el texto marca la casilla -->
+                <label for="terms">He leído y acepto la política de privacidad. Soy mayor de 18 años.</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Consumo Responsable -->
+    <section class="consumo-responsable">
+        <h2>CERTEZA RECOMIENDA UN CONSUMO RESPONSABLE.</h2>
+        <p>Disfruta con moderación. Solo para mayores de <strong>18 años</strong>.</p>
+    </section>
+
+    <!-- Footer: Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-footer">CERTEZA<span>.</span></div>
+        </div>
+        <div class="copy">
+            &copy; 2026 Cerveza Certeza. Todos los derechos reservados. <!-- &copy; dibuja el símbolo de copyright © -->
+        </div>
+    </footer>
+
+    <!-- LÓGICA DEL CARRUSEL EN JAVASCRIPT -->
+    <script>
+        let slideIndex = 0; // Variable que guarda el número de la foto actual (empieza en 0).
+        let slideInterval; // Variable para guardar el temporizador automático.
+
+        // Función principal que decide qué foto mostrar y cuáles ocultar.
+        function showSlides(n) {
+            // Busca en el HTML todas las fotos y todos los puntitos.
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            // Si intentamos pasar de la última foto, volvemos a la primera (0).
+            if (n >= slides.length) {slideIndex = 0}
+            // Si retrocedemos desde la primera foto, vamos a la última.
+            if (n < 0) {slideIndex = slides.length - 1}
+            
+            // Bucle 1: Oculta TODAS las fotos quitándoles la clase 'active'.
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            // Bucle 2: Apaga TODOS los puntitos quitándoles la clase 'active'.
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            // Muestra SOLO la foto correspondiente al número guardado en 'slideIndex'.
+            if (slides[slideIndex]) {
+                slides[slideIndex].classList.add("active");
+                // Enciende el puntito correspondiente.
+                if(dots[slideIndex]) dots[slideIndex].classList.add("active");
+            }
+        }
+
+        // Función que se activa al tocar un puntito específico.
+        function currentSlide(n) {
+            slideIndex = n; // Actualiza el índice al número que tocaste.
+            showSlides(slideIndex); // Muestra esa foto.
+            resetInterval(); // Reinicia el temporizador para que no cambie justo al tocar.
+        }
+
+        // Función que se activa al tocar las flechas de siguiente/anterior.
+        function plusSlides(n) {
+            slideIndex += n; // Suma o resta 1 al índice.
+            showSlides(slideIndex); // Muestra la foto calculada.
+            resetInterval(); // Reinicia el temporizador.
+        }
+
+        // Función para avanzar una foto (usada por el temporizador automático).
+        function nextSlide() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }
+
+        // Función que controla el cambio automático de fotos.
+        function resetInterval() {
+            clearInterval(slideInterval); // Detiene el reloj anterior para que no se acumulen.
+            // Crea un reloj nuevo que ejecuta la función 'nextSlide' cada 20000 milisegundos (20 segundos).
+            slideInterval = setInterval(nextSlide, 20000); 
+        }
+
+        // Acciones que se ejecutan automáticamente nada más cargar la página:
+        showSlides(slideIndex); // Muestra la primera foto.
+        resetInterval(); // Arranca el reloj automático.
+    </script>
+</body>
+</html>

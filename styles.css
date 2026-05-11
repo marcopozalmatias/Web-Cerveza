@@ -1,0 +1,701 @@
+/* VARIABLES GLOBALES: Aquí guardas colores y letras clave para no tener que escribirlos a mano todo el rato. */
+:root {
+  --primary-red: #C32032; /* Rojo principal de la marca */
+  --bg-cream: #F5F2EB;    /* Color crema para los fondos */
+  --text-dark: #1A1A1A;   /* Gris casi negro para los textos */
+  --gold-accent: #D49A00; /* Dorado para acentos */
+  --font-heading: 'Oswald', sans-serif; /* Tipo de letra para títulos */
+  --font-body: 'Roboto', sans-serif;    /* Tipo de letra para párrafos */
+}
+
+/* RESETEO: Le quita los márgenes y espacios invisibles que los navegadores ponen por defecto. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Asegura que los bordes no hagan que las cajas se salgan de sus medidas */
+}
+
+/* Comportamiento fluido al hacer scroll tras pulsar un enlace del menú */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ESTILOS BASE DEL CUERPO */
+body {
+  font-family: var(--font-body); /* Aplica la fuente Roboto a todo */
+  background-color: var(--bg-cream); /* Fondo crema */
+  color: var(--text-dark); /* Letra oscura */
+  line-height: 1.6; /* Separación cómoda entre líneas de texto */
+}
+
+/* HEADER (CABECERA) */
+header {
+  position: fixed; /* Lo clava en la parte superior aunque bajes por la página */
+  top: 0;
+  width: 100%; /* Ocupa de lado a lado */
+  background-color: var(--text-dark);
+  color: var(--bg-cream);
+  padding: 1rem 5%; /* Espaciado por dentro (arriba/abajo y lados) */
+  display: flex; /* Convierte el contenedor en una caja flexible para alinear cosas en fila */
+  justify-content: space-between; /* Empuja el logo a la izquierda y el menú a la derecha */
+  align-items: center; /* Los centra verticalmente */
+  z-index: 1000; /* Lo pone por encima de todo lo demás para que nada lo tape */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra suave abajo */
+}
+
+/* Estilos del texto del Logo */
+header .logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--bg-cream);
+  text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+/* Colorea el punto final del logo en rojo */
+header .logo span {
+  color: var(--primary-red);
+}
+
+/* Oculta los puntos de lista en el menú y alinea los elementos en fila */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem; /* Separa los botones del menú */
+}
+
+/* Estilos de los enlaces del menú */
+nav a {
+  color: var(--bg-cream);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  text-transform: uppercase; /* Lo pone todo en mayúsculas */
+  font-size: 1.1rem;
+  transition: color 0.3s; /* Hace que el cambio de color al pasar el ratón sea suave (tarde 0.3s) */
+}
+
+/* Efecto al pasar el ratón por encima de los enlaces del menú (se vuelven rojos) */
+nav a:hover {
+  color: var(--primary-red);
+}
+
+/* SECCIÓN HERO (La primera pantalla) */
+.hero {
+  height: 100vh; /* 100% del alto de tu pantalla ('Viewport Height') */
+  background-color: var(--text-dark);
+  display: flex; /* Flexbox para poner texto a la izquierda e imagen a la derecha */
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  position: relative;
+  overflow: hidden; /* Corta cualquier elemento decorativo que se salga de la pantalla */
+  margin-top: 0; 
+  padding-top: 60px; /* Evita que la cabecera fija tape el contenido inicial */
+}
+
+/* Contenedor del texto del Hero */
+.hero-content {
+  flex: 1; /* Ocupa el espacio disponible de forma equitativa con la imagen */
+  max-width: 600px;
+  color: var(--bg-cream);
+  z-index: 2; /* Se asegura de estar por encima del fondo decorativo */
+}
+
+/* Título gigante del Hero */
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Pone rojo la palabra "Sabor Auténtico" */
+.hero h1 span {
+  color: var(--primary-red);
+}
+
+/* Párrafo del hero */
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* BOTÓN GENÉRICO */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--primary-red);
+  color: var(--bg-cream);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: 4px; /* Esquinas ligeramente redondeadas */
+  transition: background-color 0.3s, transform 0.2s; /* Efectos suaves al pasar el ratón */
+  letter-spacing: 1px;
+}
+
+/* Al pasar el ratón por el botón: oscurece el fondo y lo sube un poco hacia arriba */
+.btn:hover {
+  background-color: #a01a29;
+  transform: translateY(-3px);
+}
+
+/* Contenedor de la imagen del botellín en el Hero */
+.hero-image {
+  flex: 1; /* Ocupa la otra mitad de la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+/* Imagen del botellín */
+.hero-image img {
+  max-height: 85vh; /* Que no mida más del 85% de la pantalla */
+  object-fit: contain; /* Ajusta la imagen sin deformarla */
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); /* Le da una sombra muy realista a la botella */
+  transform: rotate(5deg); /* La inclina un poco para darle dinamismo */
+  transition: transform 0.5s ease;
+}
+
+/* Al pasar el ratón por la botella, se endereza y se agranda un poquito */
+.hero-image img:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* Mancha roja decorativa de fondo en el Hero */
+.hero::before {
+  content: ''; /* Elemento vacío generado con CSS */
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 50vw; /* 50% del ancho de pantalla */
+  height: 50vw;
+  background: radial-gradient(circle, rgba(195,32,50,0.3) 0%, transparent 70%); /* Un degradado en forma de círculo rojo difuminado */
+  z-index: 1; /* Queda por detrás de los textos y fotos */
+}
+
+/* SECCIONES EN GENERAL */
+section {
+  padding: 6rem 10%; /* Mucho espacio arriba/abajo y a los lados para que respire */
+}
+
+/* Títulos de cada sección */
+h2.section-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  position: relative;
+}
+
+/* La rayita roja pequeña que hay debajo de cada título principal */
+h2.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-red);
+  margin: 1rem auto 0; /* Lo centra horizontalmente */
+}
+
+/* SECCIÓN: EL SABOR */
+.sabor {
+  background-color: var(--bg-cream);
+  text-align: center;
+}
+
+.sabor-desc {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* CARRUSEL */
+.carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cada diapositiva del carrusel */
+.carousel-slide {
+  position: absolute; /* Las apila todas una encima de otra en el mismo sitio */
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0; /* Las hace invisibles por defecto */
+  transition: opacity 1s ease-in-out; /* Cuando aparezcan, lo harán suavemente difuminadas (1 segundo) */
+  pointer-events: none; /* Hace que las ocultas no se puedan clicar accidentalmente */
+  display: flex;
+  align-items: center;
+}
+
+/* Clase mágica: La diapositiva que tenga esta clase se vuelve visible (100% de opacidad) */
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto; /* Ya se puede clicar en ella */
+  position: relative; /* Devuelve su flujo normal para expandir la caja contenedora */
+}
+
+/* Contenido interno de cada tarjeta del carrusel */
+.slide-content {
+  display: flex; /* Divide tarjeta en texto e imagen */
+  align-items: stretch; /* Estira ambas mitades para que midan lo mismo de alto */
+  gap: 3rem;
+  width: 100%;
+  height: 450px;
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombreado de tarjeta flotante */
+  border-top: 4px solid var(--primary-red); /* Borde superior rojo de adorno */
+  overflow: hidden;
+}
+
+/* Clase para darle la vuelta al orden: Imagen a la izquierda, texto derecha */
+.slide-content.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Estilos internos del texto del carrusel */
+.slide-text {
+  flex: 1;
+  padding: 3rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-text h3 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.slide-text p {
+  color: #666;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+/* Caja de la imagen del carrusel */
+.slide-img {
+  flex: 1;
+  height: 100%;
+  min-height: 350px;
+  background-color: #fff;
+}
+
+/* La foto del carrusel llenando la caja sin deformarse */
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  object-position: center;
+}
+
+/* PUNTOS INDICADORES DEL CARRUSEL */
+.carousel-dots {
+  position: absolute;
+  bottom: -40px; /* Los coloca debajo de la tarjeta */
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* Cada puntito */
+.dot {
+  cursor: pointer; /* Muestra la manita al pasar el ratón */
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #ccc; /* Grises por defecto */
+  border-radius: 50%; /* Los hace circulares perfectos */
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* El punto de la foto actual (o si le pasas el ratón) se pone rojo */
+.dot.active, .dot:hover {
+  background-color: var(--primary-red);
+}
+
+/* FLECHAS DEL CARRUSEL */
+.prev, .next {
+  cursor: pointer;
+  position: absolute; /* Las saca del flujo normal */
+  top: 50%; /* Centradas a media altura */
+  width: 50px;
+  height: 50px;
+  margin-top: -25px; /* Corrección exacta del centro vertical */
+  color: var(--primary-red); /* Flecha roja */
+  font-weight: bold;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  border-radius: 50%; /* Botón circular */
+  user-select: none; /* Evita que selecciones la flecha como texto azul */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+/* Posiciona la flecha izquierda */
+.prev { left: -25px; }
+
+/* Posiciona la flecha derecha */
+.next { right: -25px; }
+
+/* Efecto al tocar flechas: rojo entero con icono blanco */
+.prev:hover, .next:hover {
+  background-color: var(--primary-red);
+  color: white;
+}
+
+/* SECCIÓN: PROCESO DE ELABORACIÓN */
+.proceso {
+  background-color: #fff;
+}
+
+.proceso-container {
+  display: flex;
+  flex-direction: column; /* Apila los pasos en vertical */
+  gap: 5rem; /* Separación enorme entre cada paso */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Fila de cada paso individual (imagen + texto) */
+.proceso-step {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* Invierte para que un paso tenga la foto a la izquierda y el siguiente a la derecha */
+.proceso-step.reverse {
+  flex-direction: row-reverse;
+}
+
+.proceso-img {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  height: 400px; 
+  background-color: #f0f0f0;
+}
+
+/* Comportamiento de las imágenes del proceso */
+.proceso-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta los bordes de la foto si es necesario para rellenar la caja entera sin espacios blancos */
+  object-position: center;
+  transition: transform 0.5s; /* Efecto zoom lento */
+}
+
+/* Zoom suave a la foto al pasar el ratón */
+.proceso-img:hover img {
+  transform: scale(1.05);
+}
+
+.proceso-text { flex: 1; }
+
+.proceso-text h3 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--primary-red);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.proceso-text p {
+  font-size: 1.15rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* SECCIÓN: HISTORIA */
+.historia {
+  background-color: var(--bg-cream);
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.historia-text { flex: 1; }
+
+/* El título de la historia alineado a la izquierda */
+.historia-text h2.section-title {
+  text-align: left;
+}
+.historia-text h2.section-title::after {
+  margin-left: 0; /* Mueve la rayita roja a la izquierda */
+}
+
+.historia-text p {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* Caja de la cita decorativa a la derecha */
+.historia-image {
+  flex: 1;
+  background-color: #fff;
+  padding: 4rem;
+  border-radius: 8px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  border: 4px solid var(--primary-red); /* Borde rojo grueso */
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Letras gigantes transparentes de "CERTEZA" al fondo del recuadro de la cita */
+.historia-image::after {
+  content: 'CERTEZA';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Lo centra perfectamente en el recuadro */
+  font-size: 8rem;
+  color: rgba(195, 32, 50, 0.05); /* Rojo transparente (5%) */
+  white-space: nowrap; /* Evita que la palabra se parta en dos líneas */
+  font-weight: bold;
+}
+
+/* SECCIÓN: NEWSLETTER */
+.newsletter {
+  background-color: var(--text-dark); /* Fondo oscuro */
+  color: var(--bg-cream);
+  text-align: center;
+  padding: 8rem 10%;
+}
+
+.newsletter .section-title { color: var(--bg-cream); }
+.newsletter .section-title::after { background-color: var(--primary-red); }
+
+.newsletter-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.newsletter-content p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #ccc;
+}
+
+/* Caja del formulario */
+.newsletter-form {
+  display: flex; /* Para poner el campo de email y el botón en línea */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+/* Cajetín para escribir el correo */
+.newsletter-form input[type="email"] {
+  flex: 1; /* Ocupa el máximo espacio restante */
+  max-width: 400px;
+  padding: 1rem 1.5rem;
+  border: 2px solid #444; /* Borde gris oscuro */
+  background-color: transparent; /* Fondo transparente */
+  color: #fff; /* Texto que escribes en blanco */
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  border-radius: 4px;
+  outline: none; /* Quita el borde azul molesto de los navegadores al hacer clic */
+  transition: border-color 0.3s;
+}
+
+/* Al pinchar en el input, el borde se vuelve rojo */
+.newsletter-form input[type="email"]:focus {
+  border-color: var(--primary-red);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: #777; /* Color del texto "Escribe tu correo..." */
+}
+
+/* Ajustes del botón dentro del formulario para quitarle bordes raros de navegador */
+.newsletter-form .btn {
+  border: none;
+  cursor: pointer;
+}
+
+/* Cajita de los términos y condiciones */
+.newsletter-terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Vuelve la cajita del check de color rojo */
+.newsletter-terms input[type="checkbox"] {
+  accent-color: var(--primary-red);
+  cursor: pointer;
+}
+
+/* SECCIÓN: CONSUMO RESPONSABLE */
+.consumo-responsable {
+  background-color: var(--primary-red); /* Banda inferior roja */
+  color: var(--bg-cream);
+  text-align: center;
+  padding: 3rem 10%;
+}
+
+.consumo-responsable h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.consumo-responsable p { font-size: 1.2rem; }
+
+/* FOOTER (PIE DE PÁGINA) */
+footer {
+  background-color: var(--text-dark);
+  color: var(--bg-cream);
+  padding: 4rem 10% 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Logo del pie de página */
+.logo-footer {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.logo-footer span { color: var(--primary-red); }
+
+
+/* ========================================================
+   DISEÑO ADAPTATIVO
+   Adaptamos la web a diferentes tamaños de pantalla para que se vea bien tanto en ordenadores como en tablets y móviles.
+   ======================================================== */
+
+/* Para Pantallas tipo Tablet (menos de 1024px de ancho) */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 4rem; } /* Achica un poco el título principal */
+  
+  .historia { 
+    flex-direction: column; /* Pone la imagen de la cita debajo del texto en vez de al lado */
+    gap: 3rem; 
+  }
+  
+  /* Convierte todos los pasos del proceso en columnas (foto arriba, texto abajo) */
+  .proceso-step, .proceso-step.reverse {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  /* Ajusta el tamaño de las imágenes del proceso para que quepan */
+  .proceso-img {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+/* Para Pantallas tipo Móvil (menos de 768px de ancho) */
+@media (max-width: 768px) {
+  
+  /* El Hero entero se pone en columna: Texto arriba, botella abajo */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    height: auto;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-content { margin-bottom: 3rem; }
+  .hero h1 { font-size: 3.5rem; } /* Título más pequeño para móviles */
+  
+  /* Botella más pequeña */
+  .hero-image img { max-height: 50vh; }
+
+  /* La cabecera (Header) colapsa el menú bajo el logo */
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  /* Los enlaces del menú se apilan centrados */
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Centra los títulos de la sección historia */
+  .historia-text h2.section-title { text-align: center; }
+  .historia-text h2.section-title::after { margin: 1rem auto 0; }
+
+  /* Adaptación del Carrusel para móviles */
+  .slide-content, .slide-content.reverse {
+    flex-direction: column; /* Foto arriba o abajo del texto, ya no de lado */
+    gap: 0;
+    height: auto; /* Permite que crezca según el texto */
+  }
+  .slide-text {
+    padding: 2rem;
+    text-align: center;
+  }
+  .slide-img {
+    width: 100%;
+    min-height: 250px;
+  }
+  .carousel-container {
+    min-height: 600px; /* Dale más altura en móvil para que quepa texto e imagen apilados */
+  }
+
+  /* El cajetín del email y el botón del boletín se apilan verticalmente */
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input[type="email"] { max-width: 100%; }
+}
